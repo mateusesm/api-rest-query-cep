@@ -1,0 +1,10 @@
+{
+  "openapi": "3.0.3",
+  "info": "API Rest para consulta de CEP e frete",
+  "description": "Uma API de estudo que recebe um CEP, valida e entrega o endereço do CEP e um frete fictício por região",
+  "contact": {
+    "name": "Mateus Macedo",
+    "email": "mateusemanuel198@gmail.com"
+  },
+  "version": "1.0.0"
+}
