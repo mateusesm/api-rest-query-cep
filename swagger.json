@@ -10,7 +10,6 @@
     "version": "1.0.0"
   },
   "paths": {
-    "tags": ["Consulta CEP"],
     "/consulta-endereco": {
       "post": {
         "description": "Consulta de CEP e frete",
@@ -26,7 +25,14 @@
         },
         "responses": {
           "200": {
-            "description": "Consulta realizada com sucesso"
+            "description": "Consulta realizada com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseCep"
+                }
+              }
+            }
           },
           "400": {
             "description": "Erro durante a consulta"
@@ -44,6 +50,47 @@
             "type": "string",
             "description": "CEP válido para consulta",
             "example": "01001000"
+          }
+        },
+        "required": ["cep"]
+      },
+      "ResponseCep": {
+        "type": "object",
+        "properties": {
+          "cep": {
+            "type": "string",
+            "description": "CEP retornado",
+            "example": "01001000"
+          },
+          "rua": {
+            "type": "string",
+            "description": "Rua retornada",
+            "example": "Praça da Sé"
+          },
+          "Complemento": {
+            "type": "string",
+            "description": "Complemento retornado",
+            "example": "lado ímpar"
+          },
+          "Bairro": {
+            "type": "string",
+            "description": "Bairro retornado",
+            "example": "Sé"
+          },
+          "Cidade": {
+            "type": "string",
+            "description": "Cidade retornada",
+            "example": "São Paulo"
+          },
+          "Estado": {
+            "type": "string",
+            "description": "Estado retornado",
+            "example": "SP"
+          },
+          "Frete": {
+            "type": "number",
+            "description": "Frete fictício retornado",
+            "example": 7.85
           }
         }
       }
