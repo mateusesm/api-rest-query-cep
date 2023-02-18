@@ -1,10 +1,52 @@
 {
   "openapi": "3.0.3",
-  "info": "API Rest para consulta de CEP e frete",
-  "description": "Uma API de estudo que recebe um CEP, valida e entrega o endereço do CEP e um frete fictício por região",
-  "contact": {
-    "name": "Mateus Macedo",
-    "email": "mateusemanuel198@gmail.com"
+  "info": {
+    "title": "API Rest para consulta de CEP e frete",
+    "description": "Uma API de estudo que recebe um CEP, valida e entrega o endereço do CEP e um frete fictício por região.",
+    "contact": {
+      "name": "Mateus Macedo",
+      "email": "mateusemanuel198@gmail.com"
+    },
+    "version": "1.0.0"
   },
-  "version": "1.0.0"
+  "paths": {
+    "tags": ["Consulta CEP"],
+    "/consulta-endereco": {
+      "post": {
+        "description": "Consulta de CEP e frete",
+        "requestBody": {
+          "description": "CEP válido para consulta",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestCep"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Consulta realizada com sucesso"
+          },
+          "400": {
+            "description": "Erro durante a consulta"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "RequestCep": {
+        "type": "object",
+        "properties": {
+          "cep": {
+            "type": "string",
+            "description": "CEP válido para consulta",
+            "example": "01001000"
+          }
+        }
+      }
+    }
+  }
 }

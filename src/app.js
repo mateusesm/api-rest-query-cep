@@ -1,12 +1,10 @@
 import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
-
 import swaggerUi from 'swagger-ui-express';
 
-import swaggerDocument from '../swagger.json';
-
 import queryCepRoutes from './routes/queryCepRoutes';
+import swaggerRoutes from './routes/swaggerRoutes';
 
 class App {
   constructor() {
@@ -23,8 +21,8 @@ class App {
   }
 
   routes() {
+    this.app.use('/', swaggerUi.serve, swaggerRoutes);
     this.app.use('/consulta-endereco', queryCepRoutes);
-    this.app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
   }
 }
 
